@@ -15,10 +15,10 @@ export const Navigation = () => {
 
     return (
         <nav className='flex gap-4 items-center'>
-            <span className='cursor-pointer font-semibold' onClick={(e) => handlePush(e, routing.articles)}>
+            <span className='cursor-pointer' onClick={(e) => handlePush(e, routing.articles)}>
                 Статьи
             </span>
-            <span className="cursor-pointer font-semibold" onClick={(e) => handlePush(e, routing.tests)}>
+            <span className="cursor-pointer" onClick={(e) => handlePush(e, routing.tests)}>
                 Тесты
             </span>
             <div className='relative w-8 aspect-square'>

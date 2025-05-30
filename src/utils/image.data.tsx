@@ -9,5 +9,9 @@ export const imageData = {
     user: {
         alt: "user",
         src: "flowers/user.svg"
+    },
+    flowers1: {
+        alt: "flowers",
+        src: "/flowers/flowers.png"
     }
 }

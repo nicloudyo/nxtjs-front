@@ -3,16 +3,8 @@ import { Geist, Geist_Mono, Geologica } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/ui/header/Header";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-const geistGeo = Geologica({
+const geistSans = Geologica({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
@@ -29,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistGeo.variable} antialiased`}
+        className={`${geistSans.variable} antialiased overflow-hidden`}
       >
         <Header />
         {children}

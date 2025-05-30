@@ -22,7 +22,7 @@ export const HeaderLogo = () => {
                     alt={imageData.logo.alt}
                 />
             </div>
-            <span className='text-[30px] font-semibold mx-8'>
+            <span className='text-[30px] font-medium mx-5'>
                 EcoWorld
             </span>
         </div>
