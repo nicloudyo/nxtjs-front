@@ -10,8 +10,12 @@ export const imageData = {
         alt: "user",
         src: "flowers/user.svg"
     },
-    flowers1: {
+    flowers: {
         alt: "flowers",
         src: "/flowers/flowers.png"
+    },
+    flowers1: {
+        alt: "flowers",
+        src: "/flowers/flower1.png"
     }
 }
