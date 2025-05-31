@@ -4,6 +4,7 @@ import { Flower } from "@/components/ui/Flower";
 import { imageData } from "@/utils/image.data";
 import { textData } from "@/utils/text.data";
 import Image from "next/image";
+import { Auth } from "@/components/ui/auth/AuthWindow";
 
 export default function Home() {
   return (
@@ -18,7 +19,10 @@ export default function Home() {
             : 'Error'}
         </div>
       </div>
-      <Flower src={imageData.flowers1.src} />
+      <Flower src={imageData.flowers1.src} />\
+      <div>
+        <Auth/>
+      </div>
     </div>
   );
 }
