@@ -17,5 +17,9 @@ export const imageData = {
     flowers1: {
         alt: "flowers",
         src: "/flowers/flower1.png"
-    }
+    },
+    flower2: {
+        alt: "flowers",
+        src: "/flowers/flower2.png"
+    },
 }
