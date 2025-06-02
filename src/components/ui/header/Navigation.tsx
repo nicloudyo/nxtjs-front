@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { MouseEvent, useState } from 'react';
 import { Portal } from '../Portal';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 export const Navigation = () => {
     const router = useRouter();
@@ -36,24 +36,21 @@ export const Navigation = () => {
                     alt={imageData.user.alt}
                 />
             </div>
-            
-            <AnimatePresence>
-                {showProfileModal && (
-                    <Portal>
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
+            {showProfileModal && (
+                <Portal>
+                    <motion.div
+                        initial={{ x: "100%" }}
+                        animate={{ x: "100%" }}
+                        transition={{ type: "spring", damping: 25, stiffness: 120 }}
+                    >
+                        <div
                             className="fixed inset-0 z-50"
                             onClick={() => setShowProfileModal(false)}
                         >
                             <div className="absolute inset-0 bg-opacity-30" />
-                            <motion.div
-                                initial={{ x: "100%" }}
-                                animate={{ x: 0 }}
-                                exit={{ x: "100%" }}
-                                transition={{ type: "spring", damping: 25, stiffness: 120 }}
-                                className="absolute w-2/10 h-screen right-0 bg-[#5E7F68]"
+
+                            <div
+                                className="absolute w-2/10 h-screen right-0 bg-[#5E7F68] bg-opacity-30"
                                 onClick={(e) => e.stopPropagation()}
                             >
                                 <div className='relative w-full h-full'>
@@ -82,11 +79,12 @@ export const Navigation = () => {
                                             className='object-contain' />
                                     </div>
                                 </div>
-                            </motion.div>
-                        </motion.div>
-                    </Portal>
-                )}
-            </AnimatePresence>
+
+                            </div>
+                        </div>
+                    </motion.div>
+                </Portal>
+            )}
         </nav>
     );
 }
