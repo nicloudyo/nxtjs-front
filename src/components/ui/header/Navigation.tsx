@@ -5,10 +5,12 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { MouseEvent, useState } from 'react';
 import { Portal } from '../Portal';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export const Navigation = () => {
     const router = useRouter();
     const [showProfileModal, setShowProfileModal] = useState(false);
+    
     const handlePush = (event: MouseEvent, link: string) => {
         event.preventDefault();
         router.push(link);
@@ -34,50 +36,57 @@ export const Navigation = () => {
                     alt={imageData.user.alt}
                 />
             </div>
-            {showProfileModal && (
-                <Portal>
-                    <div
-                        className="fixed inset-0 z-50"
-                        onClick={() => setShowProfileModal(false)}
-                    >
-                        <div className="absolute inset-0 bg-opacity-30" />
-
-                        <div
-                            className="absolute w-2/10 h-screen right-0 bg-[#5E7F68] bg-opacity-30"
-                            onClick={(e) => e.stopPropagation()}
+            
+            <AnimatePresence>
+                {showProfileModal && (
+                    <Portal>
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            className="fixed inset-0 z-50"
+                            onClick={() => setShowProfileModal(false)}
                         >
-                            <div className="flex items-center h-full text-white w-64 rounded-md p-4 z-10">
-                                <div className="font-extralight ml-10">
-                                    <h3 className="font-extralight text-4xl mb-4">Имя</h3>
-                                    <p className='text-2xl'>достижения</p>
-                                    <p className='text-2xl'>достижения</p>
-                                    <div className='mt-8 ml-4 whitespace-nowrap pd-20'>
-                                        <p className='text-2xl mb-10'>Пройдено тестов: 1/10</p>
-                                        <p className='text-2xl'>Получено промокодов:1/10</p>
-                                    </div>
-                                        <div className='absolute flex justify-end  mt-20 h-full flex-grow'>
-                                            <button
-                                            onClick={() => setShowProfileModal(false)}
-                                            className="px-75 py-70 text-2xl self-start rounded"
-                                            >
-                                            Выйти
-                                            </button>
+                            <div className="absolute inset-0 bg-opacity-30" />
+                            <motion.div
+                                initial={{ x: "100%" }}
+                                animate={{ x: 0 }}
+                                exit={{ x: "100%" }}
+                                transition={{ type: "spring", damping: 25, stiffness: 120 }}
+                                className="absolute w-2/10 h-screen right-0 bg-[#5E7F68]"
+                                onClick={(e) => e.stopPropagation()}
+                            >
+                                <div className='relative w-full h-full'>
+                                    <div className="flex items-center h-full text-white w-64 rounded-md p-4 z-10">
+                                        <div className="font-extralight mx-3">
+                                            <h3 className="font-extralight text-3xl mb-4">Имя</h3>
+                                            <p className='text-xl'>достижения</p>
+                                            <p className='text-xl'>достижения</p>
+                                            <div className='my-8 whitespace-nowrap pd-20'>
+                                                <p className='text-lg'>Пройдено тестов: 1/10</p>
+                                                <p className='text-lg'>Получено промокодов:1/10</p>
+                                            </div>
                                         </div>
+                                    </div>
+                                    <button
+                                        onClick={() => setShowProfileModal(false)}
+                                        className="absolute bottom-0 right-5 text-white cursor-pointer text-2xl self-start rounded"
+                                    >
+                                        Выйти
+                                    </button>
+                                    <div className='absolute -top-5 -right-10 w-75 h-80 z-50'>
+                                        <Image
+                                            fill
+                                            src={imageData.flower2.src}
+                                            alt={imageData.flower2.alt}
+                                            className='object-contain' />
+                                    </div>
                                 </div>
-                            </div>
-                                <div className='absolute top-[-80] right-0 w-90 h-128 z-50'>
-                                    <Image 
-                                    fill
-                                    src={imageData.flower2.src}
-                                    alt={imageData.flower2.alt} 
-                                    className='object-contain'>
-                                    </Image>
-                                </div>
-                                
-                        </div>
-                    </div>
-                </Portal>
-            )}
+                            </motion.div>
+                        </motion.div>
+                    </Portal>
+                )}
+            </AnimatePresence>
         </nav>
     );
 }
