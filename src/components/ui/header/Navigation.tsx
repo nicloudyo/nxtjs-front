@@ -47,21 +47,33 @@ export const Navigation = () => {
                             onClick={(e) => e.stopPropagation()}
                         >
                             <div className="flex items-center h-full text-white w-64 rounded-md p-4 z-10">
-                                <div>
-                                    <h3 className="font-medium text-lg mb-4">Имя</h3>
-                                    <p>достижения</p>
-                                    <p>достижения</p>
-                                    <p>Пройдено тестов: 1/10</p>
-                                    <p>Получено промокодов:1/10</p>
-
-                                    <button
-                                        onClick={() => setShowProfileModal(false)}
-                                        className="mt-4 cursor-pointer px-4 py-2 rounded"
-                                    >
-                                        Выйти
-                                    </button>
+                                <div className="font-extralight ml-10">
+                                    <h3 className="font-extralight text-4xl mb-4">Имя</h3>
+                                    <p className='text-2xl'>достижения</p>
+                                    <p className='text-2xl'>достижения</p>
+                                    <div className='mt-8 ml-4 whitespace-nowrap pd-20'>
+                                        <p className='text-2xl mb-10'>Пройдено тестов: 1/10</p>
+                                        <p className='text-2xl'>Получено промокодов:1/10</p>
+                                    </div>
+                                        <div className='absolute flex justify-end  mt-20 h-full flex-grow'>
+                                            <button
+                                            onClick={() => setShowProfileModal(false)}
+                                            className="px-75 py-70 text-2xl self-start rounded"
+                                            >
+                                            Выйти
+                                            </button>
+                                        </div>
                                 </div>
                             </div>
+                                <div className='absolute top-[-80] right-0 w-90 h-128 z-50'>
+                                    <Image 
+                                    fill
+                                    src={imageData.flower2.src}
+                                    alt={imageData.flower2.alt} 
+                                    className='object-contain'>
+                                    </Image>
+                                </div>
+                                
                         </div>
                     </div>
                 </Portal>
