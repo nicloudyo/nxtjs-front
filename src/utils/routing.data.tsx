@@ -3,6 +3,6 @@
 
 export const routing = {
     home: '/',
-    articles: '/selection-acrticles',
+    articles: '/selection-articles',
     tests: '/selection-tests'
 }
