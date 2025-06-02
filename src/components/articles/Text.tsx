@@ -4,7 +4,11 @@
 export const Text = {
      artname1:  {
         title: "artname1",
-        text: ["Прочитай статьи и пройди тесты чтобы получить подарки!"]
+        text: ["Прочитай статьи и пройди тесты "]
+    },
+    artname11:  {
+        title: "artname11",
+        text: ["чтобы получить подарки!"]
     },
     artname2:  {
         title: "artname2",

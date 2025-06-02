@@ -1,9 +1,8 @@
-
 import { Text } from "./Text";
-import { Block } from "./block";
+import { BlueBlock } from "./blueblock";
 import { imageData } from "@/utils/image.data";
 
-export const ArticlesBlock = () => {
+export const TestsBlock = () => {
     return (
         <div className="h-screen flex flex-col relative">
             <div className="absolute top-50 left-[330px] text-3xl">
@@ -13,15 +12,15 @@ export const ArticlesBlock = () => {
             </div>
               <img src={imageData.flower3.src} alt="" className="absolute top-10 right-4 rotate-90 w-128 h-80 scale-y-[-1] object-contain"/>
             <div className="grid-cols-3 grid gap-16 p-12 mt-70 ml-65">
-                <Block title={Text.artname2.text}/>
-                <Block title={Text.artname3.text}/>
-                <Block title={Text.artname4.text}/>
-                <Block title={Text.artname5.text}/>
-                <Block title={Text.artname6.text}/>
-                <Block title={Text.artname7.text}/>
-                <Block title={Text.artname8.text}/>
-                <Block title={Text.artname9.text}/>
-                <Block title={Text.artname10.text}/>
+                <BlueBlock title={Text.artname2.text}/>
+                <BlueBlock title={Text.artname3.text}/>
+                <BlueBlock title={Text.artname4.text}/>
+                <BlueBlock title={Text.artname5.text}/>
+                <BlueBlock title={Text.artname6.text}/>
+                <BlueBlock title={Text.artname7.text}/>
+                <BlueBlock title={Text.artname8.text}/>
+                <BlueBlock title={Text.artname9.text}/>
+                <BlueBlock title={Text.artname10.text}/>
             </div>
         </div>
     );

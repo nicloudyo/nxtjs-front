@@ -1,8 +1,8 @@
+import { TestsBlock } from "@/components/articles/TextBlocks";
 
 
-
-export default function Home(){
+export default function Home() {
     return(
-        <div>Hello</div>
+        <TestsBlock/>
     );
 }
