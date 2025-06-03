@@ -1,12 +1,14 @@
+import { text } from "../../utils/textblock.data";
 
 
-
-export const Block = (props: { title: string[]}) => {
-    return (
-        <div className="border h-[198px] w-[336px] bg-[#76A34F99] rounded-[42px] items-center justify-center flex border-gray-300">
-            <div className=" text-center text-2xl font-[400] my-7">
-                {props.title}
-            </div>
+export const Block = (props: { title?: string[]; bgColor: string }) => {
+   return (
+        <div className="grid border grid-cols-3 gap-y-10 p-5 gap-x-150">
+            {text.text.map((title, index) => (
+                <div key={index} className={`bg-[${props.bgColor}] border h-[198px] w-[336px] rounded-[42px] flex items-center justify-center border-gray-300`}>
+                    <div className="text-center text-2xl font-[400]">{title}</div>
+                </div>
+            ))}
         </div>
     );
 }
