@@ -1,5 +1,5 @@
 import { Text } from "./Text";
-import { ArtBlocksContainer } from "./block";
+import { BlocksContainer } from "./block";
 import { imageData } from "@/utils/image.data";
 
 export const ArticlesBlock = () => {
@@ -12,7 +12,7 @@ export const ArticlesBlock = () => {
             </div>
               <img src={imageData.flower3.src} alt="" className="absolute top-10 right-4 rotate-90 w-128 h-80 scale-y-[-1] object-contain"/>
             <div className="grid-cols-3 grid gap-16 p-12 mt-70 ml-65">
-                <ArtBlocksContainer/>
+                <BlocksContainer bgColor="#76A34F99"/>
             </div>
         </div>
     );
