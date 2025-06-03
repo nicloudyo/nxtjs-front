@@ -13,12 +13,12 @@ export const Text = {
         "Покупка местных продуктов",
         "Сортировка мусора в России: как это сделать правильно?"
     ],
-     artname1:  {
-        title: "artname1",
+     title1:  {
+        title: "title1",
         text: ["Прочитай статьи и пройди тесты "]
     },
-    artname2:  {
-        title: "artname11",
+    title2:  {
+        title: "title2",
         text: ["чтобы получить подарки!"]
     },
     
