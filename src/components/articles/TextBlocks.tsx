@@ -1,5 +1,5 @@
 import { Text } from "./Text";
-import { BlueBlock } from "./blueblock";
+import { TestBlocksContainer } from "./block";
 import { imageData } from "@/utils/image.data";
 
 export const TestsBlock = () => {
@@ -8,19 +8,11 @@ export const TestsBlock = () => {
             <div className="absolute top-50 left-[330px] text-3xl">
                 {Text.artname1.text}
                 <br />
-                {Text.artname11.text}
+                {Text.artname2.text}
             </div>
               <img src={imageData.flower3.src} alt="" className="absolute top-10 right-4 rotate-90 w-128 h-80 scale-y-[-1] object-contain"/>
             <div className="grid-cols-3 grid gap-16 p-12 mt-70 ml-65">
-                <BlueBlock title={Text.artname2.text}/>
-                <BlueBlock title={Text.artname3.text}/>
-                <BlueBlock title={Text.artname4.text}/>
-                <BlueBlock title={Text.artname5.text}/>
-                <BlueBlock title={Text.artname6.text}/>
-                <BlueBlock title={Text.artname7.text}/>
-                <BlueBlock title={Text.artname8.text}/>
-                <BlueBlock title={Text.artname9.text}/>
-                <BlueBlock title={Text.artname10.text}/>
+                <TestBlocksContainer/>
             </div>
         </div>
     );
