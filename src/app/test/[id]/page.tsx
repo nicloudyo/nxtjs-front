@@ -10,11 +10,11 @@ import React, { useEffect } from 'react';
 export default function Home({ params }: { params: Promise<{ id: string }> }) {
     const userId = userStore(state => state.id);
     const router = useRouter();
-    // useEffect(() => {
-    //     if(userId !== null || userId !== ""){
-    //         router.push('/');
-    //     }
-    // }, []);
+    useEffect(() => {
+        if(userId !== null || userId !== ""){
+            router.push('/');
+        }
+    }, []);
 
     const { id } = React.use(params);
 
