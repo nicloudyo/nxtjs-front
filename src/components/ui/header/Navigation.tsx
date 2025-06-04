@@ -6,11 +6,13 @@ import { useRouter } from 'next/navigation';
 import { MouseEvent, useState } from 'react';
 import { Portal } from '../Portal';
 import { motion, AnimatePresence } from 'framer-motion';
+import userStore from '@/store/userStore.store';
 
 export const Navigation = () => {
     const router = useRouter();
     const [showProfileModal, setShowProfileModal] = useState(false);
-    
+    const userId = userStore(state => state.id);
+
     const handlePush = (event: MouseEvent, link: string) => {
         event.preventDefault();
         router.push(link);
@@ -19,6 +21,10 @@ export const Navigation = () => {
     const toggleProfileModal = (event: MouseEvent) => {
         event.preventDefault();
         setShowProfileModal(!showProfileModal);
+    }
+
+    const handleLogin = () => {
+        router.push('/login');
     }
 
     return (
@@ -36,7 +42,8 @@ export const Navigation = () => {
                     alt={imageData.user.alt}
                 />
             </div>
-            
+        
+
             <AnimatePresence>
                 {showProfileModal && (
                     <Portal>
@@ -56,32 +63,41 @@ export const Navigation = () => {
                                 className="absolute w-2/10 h-screen right-0 bg-[#5E7F68]"
                                 onClick={(e) => e.stopPropagation()}
                             >
-                                <div className='relative w-full h-full'>
-                                    <div className="flex items-center h-full text-white w-64 rounded-md p-4 z-10">
-                                        <div className="font-extralight mx-3">
-                                            <h3 className="font-extralight text-3xl mb-4">Имя</h3>
-                                            <p className='text-xl'>достижения</p>
-                                            <p className='text-xl'>достижения</p>
-                                            <div className='my-8 whitespace-nowrap pd-20'>
-                                                <p className='text-lg'>Пройдено тестов: 1/10</p>
-                                                <p className='text-lg'>Получено промокодов:1/10</p>
+                                {
+                                    userId == "" ? (
+                                        <div className='flex justify-center items-center w-full h-full'>
+                                            <button className='text-white cursor-pointer text-4xl' onClick={handleLogin}>
+                                                Войти
+                                            </button>
+                                        </div>
+                                    ) :
+                                        <div className='relative w-full h-full'>
+                                            <div className="flex items-center h-full text-white w-64 rounded-md p-4 z-10">
+                                                <div className="font-extralight mx-3">
+                                                    <h3 className="font-extralight text-3xl mb-4">Имя</h3>
+                                                    <p className='text-xl'>достижения</p>
+                                                    <p className='text-xl'>достижения</p>
+                                                    <div className='my-8 whitespace-nowrap pd-20'>
+                                                        <p className='text-lg'>Пройдено тестов: 1/10</p>
+                                                        <p className='text-lg'>Получено промокодов:1/10</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <button
+                                                onClick={() => setShowProfileModal(false)}
+                                                className="absolute bottom-0 right-5 text-white cursor-pointer text-2xl self-start rounded"
+                                            >
+                                                Выйти
+                                            </button>
+                                            <div className='absolute -top-5 -right-10 w-75 h-80 z-50'>
+                                                <Image
+                                                    fill
+                                                    src={imageData.flower2.src}
+                                                    alt={imageData.flower2.alt}
+                                                    className='object-contain' />
                                             </div>
                                         </div>
-                                    </div>
-                                    <button
-                                        onClick={() => setShowProfileModal(false)}
-                                        className="absolute bottom-0 right-5 text-white cursor-pointer text-2xl self-start rounded"
-                                    >
-                                        Выйти
-                                    </button>
-                                    <div className='absolute -top-5 -right-10 w-75 h-80 z-50'>
-                                        <Image
-                                            fill
-                                            src={imageData.flower2.src}
-                                            alt={imageData.flower2.alt}
-                                            className='object-contain' />
-                                    </div>
-                                </div>
+                                }
                             </motion.div>
                         </motion.div>
                     </Portal>
