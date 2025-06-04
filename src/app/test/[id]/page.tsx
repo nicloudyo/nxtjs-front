@@ -10,11 +10,11 @@ import React, { useEffect } from 'react';
 export default function Home({ params }: { params: Promise<{ id: string }> }) {
     const userId = userStore(state => state.id);
     const router = useRouter();
-    useEffect(() => {
-        if(userId !== null || userId !== ""){
-            router.push('/');
-        }
-    }, []);
+    // useEffect(() => {
+    //     if(userId !== null || userId !== ""){
+    //         router.push('/');
+    //     }
+    // }, []);
 
     const { id } = React.use(params);
 
@@ -23,12 +23,16 @@ export default function Home({ params }: { params: Promise<{ id: string }> }) {
     const test = quationData[slug];
 
     return (
-        <div className='flex justify-center flex-wrap gap-10 w-5/10 items-center'>
-            {
-                test.text.map((item, index) => (
-                    <TestButton key={index} title={item} />
-                ))
-            }
+        <div className='flex justify-center flex-col items-center gap-10'>
+            <h1 className='text-xl w-5/10 text-center'>{test.title}</h1>
+            <div className='flex justify-center flex-wrap gap-10 w-5/10 items-center'>
+
+                {
+                    test.text.map((item, index) => (
+                        <TestButton key={index} title={item} />
+                    ))
+                }
+            </div>
         </div>
     );
 }
