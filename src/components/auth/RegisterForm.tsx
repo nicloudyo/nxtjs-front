@@ -7,6 +7,7 @@ import { ChangeForm } from "./form/ChangeForm";
 import { Title } from "./form/Title";
 import UserService from "@/services/user.service";
 import userStore from "@/store/userStore.store";
+import { FormEvent } from "react";
 
 
 
@@ -18,13 +19,13 @@ export const RegisterForm = () => {
         education: "",
         password: "",
     });
-    const handleClick = async (credentials: { email: string; password: string; education: string; fullname: string }) => {
-        const data = await UserService.register(credentials);
-        userState.setUser(data);
+    const handleClick = async (e: FormEvent) => {
+        e.preventDefault();
+        const data = await UserService.register(formData.email, formData.fullname, formData.password, formData.education);
     }
     return (
-        <Form>
-            <Title text="Зарегистрируйтесь!"/>
+        <Form submit={handleClick}>
+            <Title text="Зарегистрируйтесь!" />
             <Input name="email" placeholder="Введите Email" type="email" value={formData.email} onChange={handleChange} />
             <Input name="fullname" placeholder="Введите Имя" type="text" value={formData.fullname} onChange={handleChange} />
             <Input name="education" placeholder="Введите учебное заведение" type="text" value={formData.education} onChange={handleChange} />

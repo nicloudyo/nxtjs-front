@@ -11,7 +11,7 @@ import userStore from '@/store/userStore.store';
 export const Navigation = () => {
     const router = useRouter();
     const [showProfileModal, setShowProfileModal] = useState(false);
-    const userId = userStore(state => state.id);
+    const userState = userStore();
 
     const handlePush = (event: MouseEvent, link: string) => {
         event.preventDefault();
@@ -64,7 +64,7 @@ export const Navigation = () => {
                                 onClick={(e) => e.stopPropagation()}
                             >
                                 {
-                                    userId == "" ? (
+                                    userState.id == "" ? (
                                         <div className='flex justify-center items-center w-full h-full'>
                                             <button className='text-white cursor-pointer text-4xl' onClick={handleLogin}>
                                                 Войти
@@ -74,17 +74,14 @@ export const Navigation = () => {
                                         <div className='relative w-full h-full'>
                                             <div className="flex items-center h-full text-white w-64 rounded-md p-4 z-10">
                                                 <div className="font-extralight mx-3">
-                                                    <h3 className="font-extralight text-3xl mb-4">Имя</h3>
-                                                    <p className='text-xl'>достижения</p>
-                                                    <p className='text-xl'>достижения</p>
+                                                    <h3 className="font-extralight text-3xl mb-4">{userState.fullname}</h3>
                                                     <div className='my-8 whitespace-nowrap pd-20'>
                                                         <p className='text-lg'>Пройдено тестов: 1/10</p>
-                                                        <p className='text-lg'>Получено промокодов:1/10</p>
                                                     </div>
                                                 </div>
                                             </div>
                                             <button
-                                                onClick={() => setShowProfileModal(false)}
+                                                onClick={(e) => {e.preventDefault(); setShowProfileModal(false); userState.clear()}}
                                                 className="absolute bottom-0 right-5 text-white cursor-pointer text-2xl self-start rounded"
                                             >
                                                 Выйти

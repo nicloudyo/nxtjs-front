@@ -7,25 +7,27 @@ class UserService {
     }
     
 
-    static async login(user: Pick<User, "email" | "password">){
+    static async login(email: string, password: string){
         try{
+            console.log(email, password)
             const data = await axios.post(`${process.env.NEXT_PUBLIC_DOMAIN}/users/sign-in`,{
-                email: user.email,  
-                passwrod: user.password,
+                email: email,  
+                password: password
             });
+            console.log(data);
             return data.data;
         }catch{
             console.error('Cant found connect with api')
         }
     }
 
-    static async register(user: Omit<User, 'id'>){
+    static async register(email: string, fullname: string, password: string, education: string){
         try{
-            const data = await axios.post(`${process.env.NEXT_PUBLIC_DOMAIN}/users/sign-in`,{
-                email: user.email,
-                fullname: user.fullname,
-                passwrod: user.password,
-                education: user.education
+            const data = await axios.post(`${process.env.NEXT_PUBLIC_DOMAIN}/users/sign-up`,{
+                email: email,
+                fullname: fullname,
+                password: password,
+                education: education
             });
             return data.data;
         }catch{
