@@ -10,7 +10,7 @@ export const TestsBlock = () => {
     const router = useRouter();
 
     const handleClick = (id: number) => {
-        router.push(``)
+        router.push(`/test/${id}`)
     }
     return (
         <div className="h-screen flex flex-col relative py-15 px-24">
@@ -29,7 +29,7 @@ export const TestsBlock = () => {
             <div className="grid-cols-3 grid gap-12 justify-items-center items-center w-full h-6/10">
                 {
                     text.text.map((title, index) => (
-                        <Container key={index} title={title} isTest={true} />
+                        <Container key={index} title={title} isTest={true} onClick={() => handleClick(index)}/>
                     ))
                 }
             </div>
